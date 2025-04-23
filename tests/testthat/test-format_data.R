@@ -7,10 +7,10 @@ test_that("format_data returns correct columns", {
 
   expect_s3_class(formatted, "tbl_df")
 
-  if (nrow(formatted) > 0) {
-    expect_true(all(c("symbol", "date", "open", "high", "low", "close", "volume") %in% colnames(formatted)))
+  if (nrow(formatted) == 0) {
+    skip("No data returned — skipping column check")
   } else {
-    message("⚠️ No data returned from Yahoo — skipping column check")
+    expect_true(all(c("index_ts", "date", "metric", "value") %in% colnames(formatted)))
   }
 
   DBI::dbDisconnect(con)

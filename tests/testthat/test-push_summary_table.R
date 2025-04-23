@@ -1,20 +1,17 @@
-test_that("push_summary_table inserts logs correctly", {
+test_that("push_summary_table inserts logs into DB", {
   con <- connect_db()
 
-  # Create a fake log with one entry
-  log_tbl <- build_summary_table(user_login = "ibtissam", batch_id = 9999)
-  log_tbl <- log_summary(
-    log_tbl,
+  log_tbl <- tibble::tibble(
+    user_login = "ibtissam",
+    batch_id = 1745323146,
     symbol = "AAPL",
     status = "OK",
-    n_rows = 42,
-    message = "Test log from unit test"
+    n_rows = 10,
+    message = "Test log entry",
+    timestamp = Sys.time()
   )
 
-  # Push to DB
   result <- push_summary_table(con, log_tbl, schema = "student_ibtissam")
-
   expect_true(result)
-
-  DBI::dbDisconnect(con)
 })
+

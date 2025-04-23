@@ -2,20 +2,20 @@
 % Please edit documentation in R/push_summary_table.R
 \name{push_summary_table}
 \alias{push_summary_table}
-\title{Push logs to student_ibtissam.pipeline_logs}
+\title{Push log entries into pipeline_logs}
 \usage{
 push_summary_table(con, log_tbl, schema = "student_ibtissam")
 }
 \arguments{
 \item{con}{DB connection}
 
-\item{log_tbl}{Log tibble}
+\item{log_tbl}{Tibble with logs}
 
 \item{schema}{Schema name}
 }
 \value{
-TRUE if successful
+TRUE
 }
 \description{
-Push logs to student_ibtissam.pipeline_logs
+Push log entries into pipeline_logs
 }

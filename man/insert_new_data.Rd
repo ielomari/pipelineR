@@ -2,20 +2,20 @@
 % Please edit documentation in R/insert_new_data.R
 \name{insert_new_data}
 \alias{insert_new_data}
-\title{Insert new metrics into student_ibtissam.data_sp500}
+\title{Insert new stock data into student_ibtissam.data_sp500}
 \usage{
 insert_new_data(con, data, schema = "student_ibtissam")
 }
 \arguments{
-\item{con}{A PostgreSQL connection}
+\item{con}{A DBI connection}
 
 \item{data}{A tibble with index_ts, date, metric, value}
 
-\item{schema}{PostgreSQL schema name (default = student_ibtissam)}
+\item{schema}{PostgreSQL schema name}
 }
 \value{
-TRUE if insertion completed
+TRUE (invisible)
 }
 \description{
-Insert new metrics into student_ibtissam.data_sp500
+Insert new stock data into student_ibtissam.data_sp500
 }

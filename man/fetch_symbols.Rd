@@ -2,16 +2,38 @@
 % Please edit documentation in R/fetch_symbols.R
 \name{fetch_symbols}
 \alias{fetch_symbols}
-\title{Fetch S&P500 tickers from the sp500.info table}
+\title{#' Fetch S&P500 tickers from the sp500.info table
+#'
+#' @param con A PostgreSQL DB connection
+#'
+#' @return A tibble with columns symbol and index_ts
+#' @export
+fetch_symbols <- function(con) {
+query <- "SELECT symbol, index_ts FROM sp500.info"
+symbols <- DBI::dbGetQuery(con, query)
+tibble::as_tibble(symbols)
+}
+Fetch demo tickers (testing version)}
 \usage{
 fetch_symbols(con)
 }
 \arguments{
-\item{con}{A PostgreSQL DB connection}
+\item{con}{A PostgreSQL connection}
 }
 \value{
-A tibble with columns symbol and index_ts
+A tibble with real Yahoo-compatible symbols
 }
 \description{
-Fetch S&P500 tickers from the sp500.info table
+#' Fetch S&P500 tickers from the sp500.info table
+#'
+#' @param con A PostgreSQL DB connection
+#'
+#' @return A tibble with columns symbol and index_ts
+#' @export
+fetch_symbols <- function(con) {
+query <- "SELECT symbol, index_ts FROM sp500.info"
+symbols <- DBI::dbGetQuery(con, query)
+tibble::as_tibble(symbols)
+}
+Fetch demo tickers (testing version)
 }

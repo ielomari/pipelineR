@@ -11,9 +11,9 @@ yahoo_query_data <- function(batch, from, to) {
 
   purrr::map(symbols, ~ {
     tryCatch({
-      tq_get(.x, get = "stock.prices", from = from, to = to)
+      tidyquant::tq_get(.x, get = "stock.prices", from = from, to = to)
     }, error = function(e) {
-      message("❌ Failed to fetch data for ", .x)
+      message("Failed to fetch data for ", .x)
       return(NULL)
     })
   }) |>

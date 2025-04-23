@@ -16,7 +16,7 @@ test_that("log_summary adds a new entry", {
     n_rows = 42,
     message = "Test run",
     user_login = "ibtissam",
-    batch_id = 9999
+    batch_id = 1745323146
   )
 
   expect_equal(nrow(updated), 1)
