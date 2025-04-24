@@ -8,7 +8,7 @@
 #'
 #' @return Nothing. Pushes logs into the database.
 #' @export
-push_summary_table <- function(con, summary_table, user_login = Sys.getenv("user_login")) {
+push_summary_table <- function(con, summary_table, user_login = Sys.getenv("PG_USER")) {
 
   if (is.null(con) || is.null(summary_table) || is.null(user_login) || user_login == "") {
     stop("Parameters 'con', 'summary_table', and 'user_login' must be provided.")
