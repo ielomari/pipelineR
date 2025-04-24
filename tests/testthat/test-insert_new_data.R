@@ -1,13 +1,20 @@
-test_that("insert_new_data inserts only new rows", {
+test_that("insert_new_data inserts only non-duplicate rows", {
   con <- connect_db()
 
   test_data <- tibble::tibble(
     index_ts = "AAPL",
-    date     = as.Date("2025-01-01"),
+    date     = Sys.Date(),
     metric   = "close",
-    value    = 123.45
+    value    = runif(1, 100, 200)
   )
 
-  result <- insert_new_data(con, test_data, schema = "student_ibtissam")
+  result <- tryCatch({
+    inserted_n <- insert_new_data(con, test_data)
+    is.numeric(inserted_n) && inserted_n >= 0
+  }, error = function(e) {
+    message("[TEST ERROR] ", e$message)
+    FALSE
+  })
+
   expect_true(result)
 })

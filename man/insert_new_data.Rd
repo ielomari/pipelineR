@@ -2,20 +2,19 @@
 % Please edit documentation in R/insert_new_data.R
 \name{insert_new_data}
 \alias{insert_new_data}
-\title{Insert new stock data into student_ibtissam.data_sp500}
+\title{Insert new stock data into the student_ibtissam schema}
 \usage{
-insert_new_data(con, data, schema = "student_ibtissam")
+insert_new_data(con, new_data)
 }
 \arguments{
-\item{con}{A DBI connection}
+\item{con}{A valid DBI database connection.}
 
-\item{data}{A tibble with index_ts, date, metric, value}
-
-\item{schema}{PostgreSQL schema name}
+\item{new_data}{A tibble matching the table structure (index_ts, date, metric, value).}
 }
 \value{
-TRUE (invisible)
+The number of rows actually inserted.
 }
 \description{
-Insert new stock data into student_ibtissam.data_sp500
+This function inserts new stock data into student_ibtissam.data_sp500.
+It removes duplicates (same date/index_ts/metric) before insertion.
 }

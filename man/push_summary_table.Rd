@@ -2,20 +2,20 @@
 % Please edit documentation in R/push_summary_table.R
 \name{push_summary_table}
 \alias{push_summary_table}
-\title{Push log entries into pipeline_logs}
+\title{Push the summary table to student_ibtissam.pipeline_logs}
 \usage{
-push_summary_table(con, log_tbl, schema = "student_ibtissam")
+push_summary_table(con, summary_table, user_login = Sys.getenv("user_login"))
 }
 \arguments{
-\item{con}{DB connection}
+\item{con}{A valid DBI database connection.}
 
-\item{log_tbl}{Tibble with logs}
+\item{summary_table}{The tibble created during the pipeline (via build_summary_table and log_summary).}
 
-\item{schema}{Schema name}
+\item{user_login}{Optional, defaults to Sys.getenv('user_login'). The login of the user.}
 }
 \value{
-TRUE
+Nothing. Pushes logs into the database.
 }
 \description{
-Push log entries into pipeline_logs
+This function writes the batch summary to the pipeline_logs table inside your personal schema.
 }

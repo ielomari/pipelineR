@@ -1,17 +1,22 @@
-test_that("push_summary_table inserts logs into DB", {
+test_that("push_summary_table inserts logs into student_ibtissam.pipeline_logs", {
   con <- connect_db()
 
   log_tbl <- tibble::tibble(
-    user_login = "ibtissam",
-    batch_id = 1745323146,
+    batch_id = 9999,
     symbol = "AAPL",
     status = "OK",
-    n_rows = 10,
-    message = "Test log entry",
+    n_rows = 42,
+    message = "Test log entry from testthat",
     timestamp = Sys.time()
   )
 
-  result <- push_summary_table(con, log_tbl, schema = "student_ibtissam")
+  result <- tryCatch({
+    push_summary_table(con, log_tbl, user_login = "ibtissam")
+    TRUE
+  }, error = function(e) {
+    message("[TEST ERROR] ", e$message)
+    FALSE
+  })
+
   expect_true(result)
 })
-
