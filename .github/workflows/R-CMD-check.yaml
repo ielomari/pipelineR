@@ -34,6 +34,7 @@ jobs:
       PG_PASSWORD: ${{ secrets.PG_PASSWORD }}
       PG_SCHEMA: student_ibtissam
 
+
     steps:
       - uses: actions/checkout@v4
 
