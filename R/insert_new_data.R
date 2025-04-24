@@ -20,7 +20,7 @@ insert_new_data <- function(con, new_data) {
     ))
   }
 
-  schema <- "student_ibtissam"  # Forcément ton propre schéma
+  schema <- "student_ibtissam"
 
   # Préparation des listes pour la requête
   index_ts_list <- unique(new_data$index_ts)
