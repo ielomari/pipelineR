@@ -33,7 +33,7 @@ start_pipeline <- function(from, to, batch_size = 10, user_login = Sys.getenv("U
     formatted <- format_data(data_list)
 
     tryCatch({
-      insert_new_data(con, formatted, schema = "student_ibtissam")
+      insert_new_data(con, formatted)
 
       for (sym in unique(formatted$index_ts)) {
         log_tbl <- log_summary(
@@ -62,5 +62,5 @@ start_pipeline <- function(from, to, batch_size = 10, user_login = Sys.getenv("U
   }
 
   # Push log to the database
-  push_summary_table(con, log_tbl, schema = "student_ibtissam")
+  push_summary_table(con, log_tbl)
 }

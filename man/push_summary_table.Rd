@@ -4,7 +4,7 @@
 \alias{push_summary_table}
 \title{Push the summary table to student_ibtissam.pipeline_logs}
 \usage{
-push_summary_table(con, summary_table, user_login = Sys.getenv("user_login"))
+push_summary_table(con, summary_table, user_login = Sys.getenv("PG_USER"))
 }
 \arguments{
 \item{con}{A valid DBI database connection.}

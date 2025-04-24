@@ -1,3 +1,6 @@
+utils::globalVariables(c("batch_id", "symbol", "status", "n_rows", "timestamp"))
+
+
 #' Push the summary table to student_ibtissam.pipeline_logs
 #'
 #' This function writes the batch summary to the pipeline_logs table inside your personal schema.
